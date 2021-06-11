@@ -1,0 +1,1 @@
+CORVUS_ENV=test CORVUS_MYSQL_USER=corvus_test CORVUS_MYSQL_PWD=c0rvus CORVUS_MYSQL_HOST=localhost CORVUS_MYSQL_DB=corvus_test_db ./console.py

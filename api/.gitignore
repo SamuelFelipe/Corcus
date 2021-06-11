@@ -1,0 +1,4 @@
+.swp
+local_test*
+*.pyc
+__pycache__
