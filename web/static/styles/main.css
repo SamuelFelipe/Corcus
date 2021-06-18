@@ -1,0 +1,50 @@
+.pagos{
+    display: flex;
+    height: 520px;
+    width: 100%;
+    align-items: center;
+    background-color: #fff;
+    overflow: hidden;
+}
+
+.eps {
+    display: flex;
+    height: 520px;
+    width: 100%;
+    align-items: center;
+    background-color: #fff;
+    overflow: hidden;
+}
+
+.pagos__canvas{
+    width: 480px;
+}
+
+.pagos .cont-h3, .pagos .cont-cav{
+    height: 100%;
+    width: 50%;
+}
+
+.cont-h3{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 60px;
+    color: #fff;
+    background-color: #555;
+}
+
+.cont-cav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.eps__cav{
+    display: flex;
+    width: 100%;
+}
+
+.canvas{
+    width: 500px;
+}

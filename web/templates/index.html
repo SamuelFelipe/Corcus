@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/normalize.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/secondSection.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/firstSection.css') }}">
+    <title>Corvus</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/crow-45972.png') }}">
+  </head>
+  <body>
+    <header class="header">
+      <div class="header__top">
+        <img src="{{ url_for('static', filename='images/whitecrow.svg') }}" alt="" >
+        <div class="header__title">
+          <h1>CORVUS</h1>
+        </div>
+      </div>
+      <nav class="header__nav">
+        <ul>
+          <li><a href="/signup" class="sign-in">Sign Up</a></li>
+          <li><a href="/login" class="log-in">Log In</a></li>
+        </ul>
+      </nav>
+    </header>
+    <section class="section-1">
+      <div class="section-1__background">
+       <img src="https://www.esan.edu.pe/apuntes-empresariales/2018/08/29/1500x844_oficina_proyectos.jpg" alt="">
+      </div>
+    </section>
+    <div class="over">
+      <div class="over__content">        
+       <h2>The Last Payroll System You'll Need</h2>
+      </div>
+    </div>
+    <main>
+      <section class="section-2">
+        <div class="carac">
+          <div>
+            <img src="{{ url_for('static', filename='images/icon-1.svg')}}" alt="">
+            <h3>Save money</h3>
+            <span>A free and powerful application<br>to make all your employees payroll.</span>
+          </div>
+          <div>
+            <img src="{{ url_for('static', filename='images/icon-2.svg')}}" alt="">
+            <h3>Save time</h3>
+            <span>You only need to insert the employee<br>basic data and we do all the heavy stuff.</span>
+          </div>
+          <div>
+            <img src="{{ url_for('static', filename='images/icon-3.svg')}}" alt="">
+            <h3>Statistics</h3>
+            <span>All the data in only one place to make easier<br>to understand where the money is going</span>
+          </div>
+        </div>
+        <div class="info">
+          <div class="aboutUs">
+            <img src="{{ url_for('static', filename='images/undraw_Selecting_team_re_ndkb.svg')}}" alt="">
+            <div class="about__text">
+              <h2>About Us</h2>
+              <p>
+              Corvus is a payroll software automation, to improve SMEs efficiency. For accountants looking to automate and control their service and companies that need to automate their payroll processes. Start keeping your company's accounting in a centralized (on your phone) and simplified way (move and see the data you need in one click). Your bisiness data in one place.
+              </p>
+            </div>
+              
+            <div class="about__text">
+              <h2>The Reason for Corvus</h2>
+              <p>
+                While in the technology epicenter regions in the globe, new services have reached the point of competing in producing higher and higher percentages of efficiency over maximum percentages. In Latin America, although it is not the goal to even make agriculture an automated and robotized affair. It is obvious that even basic computational issues such as data control, payroll or cash flow have not yet been implemented, although they are necessary to improve the production of both companies and society in general.
+              </p>
+            </div>
+            <img src="{{ url_for('static', filename='images/undraw_Maintenance_re_59vn.svg')}}" alt="">
+
+            <img src="{{ url_for('static', filename='images/undraw_contract_uy56.svg')}}" alt="" class="redim">
+            <div class="about__text">
+              <h2>Why I Need It?</h2>
+              <p>
+                To make payroll processes more technological is a leap that many entrepreneurs still hesitate or would like to carry out in their companies, but they are afraid or have had bad experiences in learning these new, but increasingly simple ways to control these processes.
+              </p>
+            </div>
+            <div class="about__text">
+              <h2>Is Corvus For me?</h2>
+              <p>
+                Corvus offers a secure bridge to all these users and emerging entrepreneurs, too. To make the control of all their payroll data easier, no matter how many locations and employees are in your company. And it is especially dedicated to accounting and business administration professionals who want to digitize their customers' portfolios. To free yourself from administrative burdens and repetitive processes in your payroll services.
+              </p>
+            </div>
+            <img src="{{ url_for('static', filename='images/undraw_digital_nomad_9kgl.svg')}}" alt="" class="redim">
+          </div>
+
+        </div>
+
+
+
+
+       <!--  <div class="first">
+          
+        </div> -->
+
+       <!--  <div class="text">
+          <div class="text-columnL">
+            <img src="{{ url_for('static', filename='images/Data Process_Monochromatic.svg') }}" alt="" srcset="">
+          </div>
+          <div class="text-columnR">
+            <p>
+            While in the technology epicenter regions in the globe, new services have reached the point of competing in producing higher and higher percentages of efficiency over maximum percentages. In Latin America, although it is not the goal to even make agriculture an automated and robotized affair. It is obvious that even basic computational issues such as data control, payroll or cash flow have not yet been implemented, although they are necessary to improve the production of both companies and society in general.
+            </p>
+            <p>
+            To make payroll processes more technological is a leap that many entrepreneurs still hesitate or would like to carry out in their companies, but they are afraid or have had bad experiences in learning these new, but increasingly simple ways to control these processes.
+            </p>
+            <p>
+            Corvus offers a secure bridge to all these users and emerging entrepreneurs, too. To make the control of all their payroll data easier, no matter how many locations and employees are in your company. And it is especially dedicated to accounting and business administration professionals who want to digitize their customers' portfolios. To free yourself from administrative burdens and repetitive processes in your payroll services.
+            </p>
+          </div>
+        </div> -->
+      </section>
+    </main>
+    <footer>
+    </footer>
+    <script src="{{ url_for('static', filename='scripts/loadslider.js') }}"></script>
+  </body>
+</html>

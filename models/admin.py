@@ -19,7 +19,7 @@ class Admin(BaseModel, Base):
     __tablename__ = 'admin_user'
     id = Column(Integer, primary_key=True)
     username = Column(String(32), index=True)
-    password_hash = Column(String(94), nullable=False)
+    password_hash = Column(String(128), nullable=False)
     company_id = Column(ForeignKey('company.id'), nullable=False)
     company = relationship('Company', back_populates='admin_user')
 
@@ -30,7 +30,7 @@ class Admin(BaseModel, Base):
     def verify_password(self, password):
         return check_password_hash(self.password_hash, password)
 
-    def generate_auth_token(self, expiration=600):
+    def generate_auth_token(self, expiration=900):
         s = Serializer(app.config['SECRET_KEY'], expires_in=expiration)
         return s.dumps({ 'id': self.id })
 

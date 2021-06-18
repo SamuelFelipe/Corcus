@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/app.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corvus</title>
+  </head>
+  <body>
+    <header class="header">
+      <div class="logo">
+        <h1><span class="logo__section"><a href="/app">CORVUS</a></span>/Employees</h1>
+      </div>
+      <nav>
+        <div class="search">
+          <img src="{{ url_for('static', filename='images/search_black_24dp.svg') }}" alt="">
+          <input type="text" placeholder="Search">
+        </div>
+      </nav>
+      <div class="edit">
+        <img src="{{ url_for('static', filename='images/add_white_18dp.svg')}}" alt="">
+      </div>
+    </header>
+    <main>
+      <h1>Contrato por Termino Indefinido</h1>
+      <table class="fake">
+        <tr class="table__tr">
+          <td id="id" class="table__td tr__id">Cedula</td>
+          <td id="forenames" class="table__td column">Apellidos</td>
+          <td id="names" class="table__td column ">Nombres</td>
+          <td id="position" class="table__td less">Puesto</td>
+          <td id="no_acount" class="table__td less">Numero de Cuenta</td>
+          <td id="salary" class="table__td table__salary column">Salario a Pagar</td>
+        </tr>
+      </table>
+      <section>
+        <div class="display-info">
+          <table class="table" id="table_ti"></table>
+        </div>
+      </section>
+      <h1>Contrato por Prestación de servicios</h1>
+      <table class="fake">
+        <tr class="table__tr">
+          <td id="id" class="table__td tr__id">Cedula</td>
+          <td id="forenames" class="table__td column">Apellidos</td>
+          <td id="names" class="table__td column ">Nombres</td>
+          <td id="position" class="table__td less">Puesto</td>
+          <td id="no_acount" class="table__td less">Numero de Cuenta</td>
+          <td id="salary" class="table__td table__salary column">Salario a Pagar</td>
+        </tr>
+      </table>
+      <section>
+        <div class="display-info">
+          <table class="table" id="table_ps"></table>
+        </div>
+      </section>
+      <h1>Contrato por Obra Labor</h1>
+      <table class="fake">
+        <tr class="table__tr">
+          <td id="id" class="table__td tr__id">Cedula</td>
+          <td id="forenames" class="table__td column">Apellidos</td>
+          <td id="names" class="table__td column ">Nombres</td>
+          <td id="position" class="table__td less">Puesto</td>
+          <td id="no_acount" class="table__td less">Numero de Cuenta</td>
+          <td id="item_count" class="table__td less">Numero de Items</td>
+          <td id="salary" class="table__td table__salary column">Salario a Pagar</td>
+        </tr>
+      </table>
+      <section>
+        <div class="display-info">
+          <table class="table" id="table_ol"></table>
+        </div>
+      </section>
+    </main>
+    <aside>
+    </aside>
+    <script src="{{ url_for('static', filename='scripts/application.js') }}"></script>
+    <script src="{{ url_for('static', filename='scripts/employees.js') }}"></script>
+  </body>
+</html>

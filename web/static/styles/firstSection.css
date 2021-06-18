@@ -1,0 +1,138 @@
+@font-face {
+    font-family: 'Roboto-medium';
+    src: url(../fonts/Roboto/Roboto-Medium.ttf) format("truetype");
+}
+@font-face {
+    font-family: 'Roboto-light';
+    src: url(../fonts/Roboto/Roboto-Regular.ttf) format("truetype")
+}
+
+
+*{
+    margin: 0;
+}
+
+body{
+    min-width: 850px;
+}
+
+.header{
+    position: absolute;
+    width: 100%;
+    background-color: #0e0e0eaa;
+    height: 70px;
+    min-height: 53px;
+    z-index: 1000;
+    top: 0;
+}
+
+
+    /* ------------------seccion de la izquierda (logo y nombre)---------------------------- */
+    .header__top{
+        display: flex;
+        height: inherit;
+        min-height: 53px;
+        align-items: center;
+        position: absolute;
+        left: 5px;
+    }
+    
+    .header__top img{
+        height: 100%;
+    }
+
+    .header__title h1{
+        font-family: 'Roboto-medium';
+        margin: 0 10px;
+        color: #fff;
+    }
+
+
+    /* ----------------------------seccion de la derecha (nav) ------------------------------ */
+
+    .header__nav{
+        position: absolute;
+        min-height: 53px;
+        right: 5px;
+        height: inherit;
+    }
+
+    .header__nav ul{
+        height: inherit;
+        display: flex;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+    }
+
+    .header__nav li{
+        margin: 0 10px;
+        list-style: none;
+    }
+
+    .header__nav a{
+        user-select: none;
+        font-size: 20px;
+        text-decoration: none;
+    }
+
+    .sign-in{
+        font-family: 'Roboto-medium';
+        border: 2px solid #4b0081;
+        padding: 10px 20px;
+        color: #fff;
+    }
+
+    .log-in{
+        font-family: 'Roboto-medium';
+        padding: 12px 40px;
+        color: #fff;
+        background-color: #4b0081;
+    }
+
+
+
+/* -------------------------------------------Seccion-1---------------------------------------------- */
+
+.section-1{
+    position: sticky;
+    top: 0;
+    /* position: relative; */
+    display: flex;
+    width: 100%;
+    height: 95vh;
+    min-height: 445px;
+}
+   
+.section-1__background{
+    height: 100%;
+    width: 100%;
+}
+.section-1__background img{
+    width: 100%;
+    height: 100%;
+    object-position: top;
+    object-fit: cover;
+}
+.over{
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: #0e0e0eaa;
+}
+.over__content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70%;
+    height: 400px;
+    color: #fff;
+}
+.over__content h2{
+    font-family: 'Roboto-medium';
+    font-size: 50px;
+}

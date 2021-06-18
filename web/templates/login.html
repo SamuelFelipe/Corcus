@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Corvus - payroll system</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/normalize.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/formbox.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/firstSection.css') }}">
+  </head>
+  <body>
+    <header class="header" style="background-color: rgb(0,0,0,1)">
+      <div class="header__top">
+        <div class="header__title">
+          <h1>CORVUS</h1>
+        </div>
+      </div>
+      <nav class="header__nav">
+        <ul>
+          <li><a href="/signup" class="log-in">sign in</a></li>
+        </ul>
+      </nav>
+    </header>
+    <div class="container">
+      <div>
+        <form class="form" id="login">
+          <h1>Registro</h1>
+          <div class="login__data">
+            <input type="text" name="username" size="20" placeholder=" Usuario" class="form-text" required>
+            <input type="password" name="password" size="20" placeholder=" Contraseña" class="form-text" required>
+          </div>
+          <input type="submit" value="Continuar" class="submit">
+        </form>
+      </div>
+    </div>
+    <script src="{{ url_for('static', filename='scripts/l_form.js') }}"></script>
+  </body>
+</html>

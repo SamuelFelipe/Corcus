@@ -18,7 +18,7 @@ def get_employees():
     for employee in g.user.company.employees:
         ret[employee.id] = employee.to_dict()
         ret[employee.id]['items_count'] = 0
-        ret[employee.id]['items_bonus'] = 0
+        ret[employee.id]['bonus_count'] = 0
         if employee.item:
             ret[employee.id]['items'] = [item.to_dict()
                                          for item in employee.item]    
@@ -27,6 +27,15 @@ def get_employees():
             ret[employee.id]['bonus'] = [bonus.to_dict()
                                          for bonus in employee.bonus]    
             ret[employee.id]['bonus_count'] = len(ret[employee.id]['bonus'])
+        ret[employee.id]['arl'] = employee.arl()
+        ret[employee.id]['health'] = employee.health()
+        ret[employee.id]['pension'] = employee.pension()
+        ret[employee.id]['sub_trans'] = employee.sub_trans()
+        ret[employee.id]['parafiscales'] = employee.para_f()
+        ret[employee.id]['salary'] = employee.salary()
+        ret[employee.id]['vacations'] = employee.vacations()
+        ret[employee.id]['cesantias'] = employee.cesantias()
+        ret[employee.id]['in_cesantias'] = employee.in_cesantias()
     return jsonify(ret)
 
 
@@ -38,15 +47,26 @@ def get_employee(employee_id):
     ret = {}
     for employee in g.user.company.employees:
         if employee.id == employee_id:
+            ret[employee.id] = employee.to_dict()
             ret[employee.id]['items_count'] = 0
+            ret[employee.id]['items_bonus'] = 0
             if employee.item:
                 ret[employee.id]['items'] = [item.to_dict()
                                              for item in employee.item]    
                 ret[employee.id]['items_count'] = len(ret[employee.id]['items'])
-        if employee.bonus:
-            ret[employee.id]['bonus'] = [item.to_dict()
-                                         for item in employee.item]    
-            ret[employee.id]['bonus_count'] = len(ret[employee.id]['bonus'])
+            if employee.bonus:
+                ret[employee.id]['bonus'] = [bonus.to_dict()
+                                             for bonus in employee.bonus]    
+                ret[employee.id]['bonus_count'] = len(ret[employee.id]['bonus'])
+            ret[employee.id]['arl'] = employee.arl()
+            ret[employee.id]['health'] = employee.health()
+            ret[employee.id]['pension'] = employee.pension()
+            ret[employee.id]['parafiscales'] = employee.para_f()
+            ret[employee.id]['sub_trans'] = employee.sub_trans()
+            ret[employee.id]['salary'] = employee.salary()
+            ret[employee.id]['vacations'] = employee.vacations()
+            ret[employee.id]['cesantias'] = employee.cesantias()
+            ret[employee.id]['in_cesantias'] = employee.in_cesantias()
         return jsonify(ret)
     abort(404)
 
@@ -57,22 +77,29 @@ def get_employee(employee_id):
 def create_employee():
     if not request.get_json():
         abort(400, description="Not a JSON")
-    dni = request.json.get('dni')
+    data = request.get_json()
+    dni = request.json.get('id')
     names = request.json.get('names')
     forenames = request.json.get('forenames')
     position = request.json.get('position')
-    c_type = request.json.get('contract_type')
-    risk = request.json.get('risk')
-    base_salary = request.json.get('base_salary')
-    if not names or not dni:
+    eps = request.json.get('eps')
+    c_type = request.json.get('c_type')
+    no_acount = request.json.get('no_acount')
+    if not names or not dni or not no_acount:
         abort(400)
-    elif not forenames:
+    elif not forenames or not eps or not position:
         abort(400)
-    elif not c_type:
+    elif c_type not in ['Termino Indefinido',
+                        'Obra Labor', 'Prestacion de Servicios']:
         abort(400)
-    new = Employee(id=dni, names=names, forenames=forenames, position=position,
-                   c_type=c_type, risk=risk, base_salary=base_salary,
-                   company=g.user.company.id)
+    if c_type == 'Obra Labor':
+        data['base_salary'] = 0
+
+    for key in data.keys():
+        if key == 'company':
+            del data['company']
+
+    new = Employee(**data, company=g.user.company.id)
     new.save()
     response = '{} {} is a new {} at {}!'.format(new.names, new.forenames,
                                                  new.position,

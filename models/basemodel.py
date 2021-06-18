@@ -34,6 +34,8 @@ class BaseModel:
 
     def to_dict(self):
         ret = self.__dict__.copy()
+        if 'company' in ret:
+            del ret['company']
         if '_sa_instance_state' in ret:
             del ret['_sa_instance_state']
         if 'created_at' in ret:
