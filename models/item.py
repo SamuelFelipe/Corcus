@@ -1,6 +1,16 @@
 #!/usr/bin/python3 
 
-'''Employee Class Definition'''
+'''
+Item class
+
+Atributes:
+    id - auto increment number
+    name - item name
+    description - item description
+    unitary_value - unitary value
+    finished - number of units finished
+'''
+
 
 from models.basemodel import BaseModel, Base
 from sqlalchemy import Column, String, Integer, ForeignKey, Float
@@ -8,6 +18,7 @@ from sqlalchemy.orm import relationship
 
 
 class Item(BaseModel, Base):
+    '''Item Class Definition'''
 
     __tablename__ = 'item'
     id = Column(Integer, primary_key=True)

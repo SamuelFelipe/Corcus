@@ -1,6 +1,13 @@
 #!/usr/bin/python3 
 
-'''Employee Class Definition'''
+'''
+Company class.
+
+Atributes:
+    id - Autoincrement number
+    name - Company name
+'''
+
 
 from models.basemodel import BaseModel, Base
 from sqlalchemy import Column, String, Integer
@@ -9,8 +16,7 @@ import uuid
 
 
 class Company(BaseModel, Base):
-    '''
-'''
+    '''Employee Class Definition'''
 
     __tablename__ = 'company'
     id = Column(Integer, primary_key=True)

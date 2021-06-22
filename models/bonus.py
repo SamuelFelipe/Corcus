@@ -1,6 +1,15 @@
 #!/usr/bin/python3 
 
-'''Bonus Class Definition'''
+'''
+Bonus class.
+
+
+Atributes:
+    id - Bonus id
+    type - type/name of the bonus
+    description - bonus description
+    value - value to add to the user payment
+'''
 
 from models.basemodel import BaseModel, Base
 from sqlalchemy import Column, String, Integer, ForeignKey, Float
@@ -8,16 +17,7 @@ from sqlalchemy.orm import relationship
 
 
 class Bonus(BaseModel, Base):
-    '''
-Bonus class.
-
-
-        Atributes:
-            id - Bonus id
-            type - type/name of the bonus
-            description - bonus description
-            value - value to add to the user payment
-'''
+    '''Bonus Class Definition'''
 
     __tablename__ = 'bonus'
     id = Column(Integer, primary_key=True)
