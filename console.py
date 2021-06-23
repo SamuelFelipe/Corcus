@@ -21,6 +21,7 @@ classes = {'bonus': Bonus,
 
 time = '%Y-%m-%d'
 
+
 class CORVUSCommand(cmd.Cmd):
 
     prompt = 'corvus [{}] '.format(datetime.strftime(datetime.utcnow(), time))
@@ -49,14 +50,13 @@ class CORVUSCommand(cmd.Cmd):
                 else:
                     try:
                         value = int(value)
-                    except:
+                    except TypeError:
                         try:
                             value = float(value)
-                        except:
+                        except TypeError:
                             continue
                 new_dict[key] = value
         return new_dict
-
 
     def do_create(self, arg):
         args = arg.split()

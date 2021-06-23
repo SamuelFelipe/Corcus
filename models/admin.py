@@ -1,4 +1,4 @@
-#!/usr/bin/python3 
+#!/usr/bin/python3
 
 '''
 Admin class to manage the data of each company
@@ -42,7 +42,6 @@ Admin class definition.
     company_id = Column(ForeignKey('company.id'), nullable=False)
     company = relationship('Company', back_populates='admin_user')
 
-
     def hash_password(self, password):
         '''Encrypt and storage the password'''
         self.password_hash = generate_password_hash(password)
@@ -54,7 +53,7 @@ Admin class definition.
     def generate_auth_token(self, expiration=900):
         '''Generate a auth token to use the api, allow one argumet (seconds)'''
         s = Serializer(app.config['SECRET_KEY'], expires_in=expiration)
-        return s.dumps({ 'id': self.id })
+        return s.dumps({'id': self.id})
 
     @staticmethod
     def verify_auth_token(token):

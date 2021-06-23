@@ -22,7 +22,8 @@ def get_all_bonuses():
     return jsonify(ret)
 
 
-@app_views.route('/<employee_id>/bonuses', methods=['GET'], strict_slashes=False)
+@app_views.route('/<employee_id>/bonuses', methods=['GET'],
+                 strict_slashes=False)
 @swag_from('documentation/application/employee_bonuses.yml', methods=['GET'])
 @auth.login_required
 def get_employee_bonuses(employee_id):
@@ -34,8 +35,10 @@ def get_employee_bonuses(employee_id):
     abort(404, description='No Valid dni')
 
 
-@app_views.route('/<employee_id>/bonuses', methods=['POST'], strict_slashes=False)
-@swag_from('documentation/application/post_employee_bonuses.yml', methods=['POST'])
+@app_views.route('/<employee_id>/bonuses', methods=['POST'],
+                 strict_slashes=False)
+@swag_from('documentation/application/post_employee_bonuses.yml',
+           methods=['POST'])
 @auth.login_required
 def create_bonus(employee_id):
     if not request.get_json():
@@ -46,13 +49,14 @@ def create_bonus(employee_id):
     for employee in g.user.company.employees:
         if employee.id == employee_id:
             new = Bonus(type=type, description=description,
-                       value=value, employee_id=employee.id)
+                        value=value, employee_id=employee.id)
             new.save()
-            return jsonify({ 'success': new.to_dict() }), 201
+            return jsonify({'success': new.to_dict()}), 201
     abort(404)
 
 
-@app_views.route('/<employee_id>/bonuses', methods=['DELETE'], strict_slashes=False)
+@app_views.route('/<employee_id>/bonuses', methods=['DELETE'],
+                 strict_slashes=False)
 @swag_from('documentation/application/delete_bonus.yml', methods=['DELETE'])
 @auth.login_required
 def remove_bonus(employee_id):
@@ -68,12 +72,13 @@ def remove_bonus(employee_id):
             for bonus in bonuses:
                 if bonus.id == bonus_id:
                     models.storage.delete(bonus)
-                    return jsonify({ 'success': True }), 200
+                    return jsonify({'success': True}), 200
             abort(400)
     abort(400)
 
 
-@app_views.route('/<employee_id>/bonuses', methods=['PUT'], strict_slashes=False)
+@app_views.route('/<employee_id>/bonuses', methods=['PUT'],
+                 strict_slashes=False)
 @swag_from('documentation/application/update_bonus.yml', methods=['PUT'])
 @auth.login_required
 def update_bonus(employee_id):
@@ -92,6 +97,6 @@ def update_bonus(employee_id):
                         if key not in ['id', 'created_at', 'updated_at']:
                             setattr(item, key, value)
                     models.storage.save()
-                return jsonify({ 'updated': employee.to_dict() }), 200
+                return jsonify({'updated': employee.to_dict()}), 200
             abort(404)
     abort(404)

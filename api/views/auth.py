@@ -28,18 +28,20 @@ def new_user():
     else:
         abort(400)
     if username is None or password is None or company_name is None:
-        abort(400) # missing arguments
+        abort(400)
     for user in models.storage.all(Admin).values():
         if user.username == username:
-            abort(400) # existing user
+            abort(400)
     for comp in models.storage.all(Company).values():
         if comp.name == company_name:
-            abort(400) # existing company
+            abort(400)
     company = Company(name=company_name)
     company.save()
     user = Admin(username=username, company=company)
     user.hash_password(password)
     user.save()
-    return jsonify({'user': user.username, 'company': company.name,
-        'next_token': 'http://127.0.0.1:5000/api/token',
-                    'auth_token': user.generate_auth_token().decode('ascii')}), 201
+    return jsonify({'user': user.username,
+                    'company': company.name,
+                    'next_token': 'http://127.0.0.1:5000/api/token',
+                    'auth_token': user.generate_auth_token().decode('ascii')
+                    }), 201

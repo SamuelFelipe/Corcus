@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 
+'''Employee api interactions'''
+
 from flask import request, abort, g
 import models
 from models.employee import Employee
@@ -21,11 +23,11 @@ def get_employees():
         ret[employee.id]['bonus_count'] = 0
         if employee.item:
             ret[employee.id]['items'] = [item.to_dict()
-                                         for item in employee.item]    
+                                         for item in employee.item]
             ret[employee.id]['items_count'] = len(ret[employee.id]['items'])
         if employee.bonus:
             ret[employee.id]['bonus'] = [bonus.to_dict()
-                                         for bonus in employee.bonus]    
+                                         for bonus in employee.bonus]
             ret[employee.id]['bonus_count'] = len(ret[employee.id]['bonus'])
         ret[employee.id]['arl'] = employee.arl()
         ret[employee.id]['health'] = employee.health()
@@ -52,12 +54,14 @@ def get_employee(employee_id):
             ret[employee.id]['items_bonus'] = 0
             if employee.item:
                 ret[employee.id]['items'] = [item.to_dict()
-                                             for item in employee.item]    
-                ret[employee.id]['items_count'] = len(ret[employee.id]['items'])
+                                             for item in employee.item]
+                ret[employee.id]['items_count'] =\
+                    len(ret[employee.id]['items'])
             if employee.bonus:
                 ret[employee.id]['bonus'] = [bonus.to_dict()
-                                             for bonus in employee.bonus]    
-                ret[employee.id]['bonus_count'] = len(ret[employee.id]['bonus'])
+                                             for bonus in employee.bonus]
+                ret[employee.id]['bonus_count'] =\
+                    len(ret[employee.id]['bonus'])
             ret[employee.id]['arl'] = employee.arl()
             ret[employee.id]['health'] = employee.health()
             ret[employee.id]['pension'] = employee.pension()
@@ -104,7 +108,7 @@ def create_employee():
     response = '{} {} is a new {} at {}!'.format(new.names, new.forenames,
                                                  new.position,
                                                  g.user.company.name)
-    return jsonify({ 'success': response }), 201
+    return jsonify({'success': response}), 201
 
 
 @app_views.route('/employees', methods=['DELETE'], strict_slashes=False)
@@ -121,7 +125,7 @@ def remove_employee():
         if employee.id == dni:
             models.storage.delete(employee)
             models.storage.save()
-            return jsonify({ 'success': True }), 200
+            return jsonify({'success': True}), 200
     abort(400, description='Invalid dni')
 
 
@@ -142,6 +146,6 @@ def update_employee():
                 if key not in ['created_at', 'updated_at']:
                     setattr(employee, key, value)
             models.storage.save()
-            return jsonify({ 'updated': employee.to_dict() }), 200
+            return jsonify({'updated': employee.to_dict()}), 200
 
     abort(400, description='No User Match')

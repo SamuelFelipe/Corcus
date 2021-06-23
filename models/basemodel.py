@@ -30,7 +30,6 @@ class BaseModel:
     created_at = Column(DateTime, default=datetime.utcnow())
     updated_at = Column(DateTime, default=datetime.utcnow())
 
-
     def save(self):
         '''Save hte object into the data base'''
         self.updated_at = datetime.utcnow()
@@ -45,7 +44,7 @@ Format = [<Class name>]{Atributes dictionary}
                                self.to_dict())
 
     def delete(self):
-        '''Removes the object, to make Permanent the remotion needs to commit'''
+        '''Removes the object, to make it Permanent needs to commit'''
         models.storage.delete(self)
 
     def to_dict(self):

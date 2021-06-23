@@ -52,7 +52,6 @@ class DBStorage:
                                              CORVUS_MYSQL_DB))
         if CORVUS_ENV == 'test':
             Base.metadata.drop_all(self.__engine)
-           
 
     def reload(self):
         '''Reload all the objects'''
@@ -60,7 +59,6 @@ class DBStorage:
         sess_factory = sessionmaker(bind=self.__engine, expire_on_commit=False)
         Session = scoped_session(sess_factory)
         self.__session = Session
-
 
     def all(self, cls=None):
         '''Return all the objects from a class if it's not None
@@ -74,22 +72,18 @@ otherwise return all the objects
                     ret[obj.id] = obj
         return ret
 
-
     def new(self, obj):
         '''Create a  new object'''
         self.__session.add(obj)
-
 
     def save(self):
         '''Save all the resent changes'''
         self.__session.commit()
 
-
     def delete(self, obj=None):
         '''Delete the passed object'''
         if obj is not None:
             self.__session.delete(obj)
-
 
     def close(self):
         '''Close the session'''

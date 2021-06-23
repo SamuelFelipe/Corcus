@@ -26,7 +26,8 @@ cors = CORS(app, resources={r'/api/*':  {'origins': '*'}})
 @auth.login_required
 def get_auth_token():
     token = g.user.generate_auth_token()
-    return jsonify({ 'token': token.decode('ascii') })
+    return jsonify({'token': token.decode('ascii')})
+
 
 @auth.verify_password
 def verify_password(username_or_token, password):
@@ -46,6 +47,7 @@ def verify_password(username_or_token, password):
         return False
     g.user = user
     return True
+
 
 @app.teardown_appcontext
 def close_db(error):

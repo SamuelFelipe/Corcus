@@ -1,4 +1,4 @@
-#!/usr/bin/python3 
+#!/usr/bin/python3
 
 '''
 Employee class.
@@ -52,7 +52,8 @@ class Employee(BaseModel, Base):
     def arl(self):
         '''Calculate the arl payment'''
         if self.c_type in ['Termino Indefinido', 'Prestacion de Servicios']:
-            risks = {'1': 0.00522, '2': 0.01044, '3': 0.02436, '4': 0.0435, '5': 0.0696}
+            risks = {'1': 0.00522, '2': 0.01044,
+                     '3': 0.02436, '4': 0.0435, '5': 0.0696}
             return risks[self.risk] * self.salary()
         return 0
 
@@ -90,7 +91,7 @@ class Employee(BaseModel, Base):
     def sub_trans(self):
         '''Return the transportation allowance'''
         if self.c_type in ['Termino Indefinido', 'Prestacion de Servicios']\
-                           and self.base_salary < 908526 * 2:
+           and self.base_salary < 908526 * 2:
             return 106454
         return 0
 
