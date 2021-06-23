@@ -1,0 +1,16 @@
+Deletes an Employee.
+---
+  tags:
+    - Employee
+  parameters:
+    - name: id
+      in: body
+      type: string
+      required: true
+      description: Employee id
+
+  responses:
+    200:
+      description: Request succesful
+    400:
+      description: The Employee id doesn't exist

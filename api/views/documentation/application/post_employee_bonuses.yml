@@ -1,0 +1,31 @@
+Create a new bonus.
+---
+  tags:
+    - Bonus
+  parameters:
+    - name: id
+      in: path
+      type: string
+      required: true
+      description: Employee id
+    - name: description
+      in: body
+      type: string
+      required: true
+      description: Bonus description
+    - name: type
+      in: body
+      type: string
+      required: true
+      description: Bonus type
+    - name: value
+      in: body
+      type: float
+      required: true
+      description: Bonus value
+        
+  responses:
+    200:
+      description: Request succesful
+    400:
+      description: The Employee id is wrong

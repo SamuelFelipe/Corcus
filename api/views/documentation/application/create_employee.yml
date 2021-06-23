@@ -1,0 +1,51 @@
+Create a employee.
+---
+  tags:
+    - Employee
+  parameters:
+    - name: Employee id
+      in: body
+      type: string
+      required: true
+      description: Employee id
+    - name: forenames
+      in: body
+      type: string
+      required: true
+      description: Employee forenames
+    - name: names
+      in: body
+      type: string
+      required: true
+      description: Employee names
+    - name: position
+      in: body
+      type: string
+      required: true
+      description: Employee position
+    - name: eps
+      in: body
+      type: string
+      required: true
+      description: EPS Name
+    - name: c_type
+      in: body
+      type: string
+      required: true
+      description: Contract type
+    - name: no_account
+      in: body
+      type: string
+      required: true
+      description: Account number
+    - name: base_salary
+      in: body
+      type: float
+      required: false
+      description: base salary
+        
+  responses:
+    201:
+      description: Request succesful
+    400:
+      description: One or more arguments are missing or wrong

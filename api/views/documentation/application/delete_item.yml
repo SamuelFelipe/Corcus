@@ -1,0 +1,21 @@
+Deletes a Item.
+---
+  tags:
+    - Bonus
+  parameters:
+    - name: Employee id
+      in: path
+      type: string
+      required: true
+      description: Employee id
+    - name: id
+      in: body
+      type: string
+      required: true
+      description: Item id
+
+  responses:
+    200:
+      description: Request succesful
+    400:
+      description: The Employee id or Item id are wrong

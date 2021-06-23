@@ -1,5 +1,8 @@
 #!/usr/bin/python3
 
+'''Manage the api authentication'''
+
+
 from flask import request, abort
 import models
 from api.views import app_views
@@ -9,8 +12,9 @@ from flasgger.utils import swag_from
 
 
 @app_views.route('/signup', methods=['POST'], strict_slashes=False)
-@swag_from('documentation/authentication/create_account.yml')
+@swag_from('documentation/authentication/create_account.yml', methods=['POST'])
 def new_user():
+    '''Create a new user'''
     from models.admin import Admin
     from models.company import Company
     if request.get_json():
@@ -39,9 +43,3 @@ def new_user():
     return jsonify({'user': user.username, 'company': company.name,
         'next_token': 'http://127.0.0.1:5000/api/token',
                     'auth_token': user.generate_auth_token().decode('ascii')}), 201
-
-
-@app_views.route("auth_status")
-@auth.login_required
-def auth_status():
-    return jsonify({'token_status':'alive'})

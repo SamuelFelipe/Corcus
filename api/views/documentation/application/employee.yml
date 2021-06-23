@@ -1,0 +1,16 @@
+Get the info fro a employee
+---
+  tags:
+    - Employee
+  parameters:
+    - name: Employee id
+      in: path
+      type: string
+      required: true
+      description: Employee id
+
+  responses:
+    200:
+      description: Request succesful
+    400:
+      description: The Employee id or Bonus id are wrong

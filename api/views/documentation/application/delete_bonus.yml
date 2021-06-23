@@ -1,0 +1,21 @@
+Deletes a bonus.
+---
+  tags:
+    - Bonus
+  parameters:
+    - name: Employee id
+      in: path
+      type: string
+      required: true
+      description: Employee id
+    - name: Bonus id
+      in: body
+      type: string
+      required: true
+      description: Bonus id
+
+  responses:
+    200:
+      description: Request succesful
+    400:
+      description: The Employee id or Bonus id are wrong

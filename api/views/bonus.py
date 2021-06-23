@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 
+'''Manage the employees interactions'''
+
 from flask import request, abort, g
 import models
 from models.bonus import Bonus
@@ -10,7 +12,7 @@ from flasgger.utils import swag_from
 
 
 @app_views.route('/bonuses', methods=['GET'], strict_slashes=False)
-@swag_from('documentation/aplication/all_bonuses.yml')
+@swag_from('documentation/application/all_bonuses.yml', methods=['GET'])
 @auth.login_required
 def get_all_bonuses():
     ret = {}
@@ -21,7 +23,7 @@ def get_all_bonuses():
 
 
 @app_views.route('/<employee_id>/bonuses', methods=['GET'], strict_slashes=False)
-@swag_from('documentation/aplication/all_employee_bonus.yml')
+@swag_from('documentation/application/employee_bonuses.yml', methods=['GET'])
 @auth.login_required
 def get_employee_bonuses(employee_id):
     ret = {}
@@ -33,7 +35,7 @@ def get_employee_bonuses(employee_id):
 
 
 @app_views.route('/<employee_id>/bonuses', methods=['POST'], strict_slashes=False)
-@swag_from('documentation/aplication/create_bonuses.yml')
+@swag_from('documentation/application/post_employee_bonuses.yml', methods=['POST'])
 @auth.login_required
 def create_bonus(employee_id):
     if not request.get_json():
@@ -51,7 +53,7 @@ def create_bonus(employee_id):
 
 
 @app_views.route('/<employee_id>/bonuses', methods=['DELETE'], strict_slashes=False)
-@swag_from('/documentation/aplication/delete_bonus.yml')
+@swag_from('documentation/application/delete_bonus.yml', methods=['DELETE'])
 @auth.login_required
 def remove_bonus(employee_id):
     if not request.get_json():
@@ -72,7 +74,7 @@ def remove_bonus(employee_id):
 
 
 @app_views.route('/<employee_id>/bonuses', methods=['PUT'], strict_slashes=False)
-@swag_from('/documentation/aplication/delete_bonus.yml')
+@swag_from('documentation/application/update_bonus.yml', methods=['PUT'])
 @auth.login_required
 def update_bonus(employee_id):
     if not request.get_json():

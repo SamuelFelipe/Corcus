@@ -1,5 +1,9 @@
 #!/usr/bin/python3
 
+'''
+Flask server
+'''
+
 import models
 from api import auth
 from api.views import app_views

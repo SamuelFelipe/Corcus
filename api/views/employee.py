@@ -11,7 +11,7 @@ from flasgger.utils import swag_from
 
 
 @app_views.route('/employees', methods=['GET'], strict_slashes=False)
-@swag_from('documentation/aplication/all_employees.yml')
+@swag_from('documentation/application/all_employees.yml', methods=['GET'])
 @auth.login_required
 def get_employees():
     ret = {}
@@ -41,7 +41,7 @@ def get_employees():
 
 @app_views.route('/employees/<employee_id>',
                  methods=['GET'], strict_slashes=False)
-@swag_from('documentation/aplication/employee.yml')
+@swag_from('documentation/application/employee.yml', methods=['GET'])
 @auth.login_required
 def get_employee(employee_id):
     ret = {}
@@ -72,7 +72,7 @@ def get_employee(employee_id):
 
 
 @app_views.route('/employees', methods=['POST'], strict_slashes=False)
-@swag_from('documentation/aplication/create_employee.yml')
+@swag_from('documentation/application/create_employee.yml', methods=['POST'])
 @auth.login_required
 def create_employee():
     if not request.get_json():
@@ -108,12 +108,12 @@ def create_employee():
 
 
 @app_views.route('/employees', methods=['DELETE'], strict_slashes=False)
-@swag_from('/documentation/aplication/delete_employee.yml')
+@swag_from('documentation/application/delete_employee.yml', methods=['DELETE'])
 @auth.login_required
 def remove_employee():
     if not request.get_json():
         abort(400, description="Not a JSON")
-    dni = request.json.get('dni')
+    dni = request.json.get('id')
     if not dni:
         abort(400, description='Missing dni')
     employees = g.user.company.employees
@@ -126,7 +126,7 @@ def remove_employee():
 
 
 @app_views.route('/employees', methods=['PUT'], strict_slashes=False)
-@swag_from('/documentation/aplication/delete_employee.yml')
+@swag_from('documentation/application/update_employee.yml', methods=['PUT'])
 @auth.login_required
 def update_employee():
     if not request.get_json():

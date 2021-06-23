@@ -1,0 +1,37 @@
+Create a new item.
+---
+  tags:
+    - Item
+  parameters:
+    - name: id
+      in: body
+      type: string
+      required: true
+      description: Employee id
+    - name: name
+      in: path
+      type: string
+      required: true
+      description: Employee id
+    - name: description
+      in: body
+      type: string
+      required: true
+      description: Item description
+    - name: unit_value
+      in: body
+      type: float
+      required: true
+      description: Item value
+    - name: finished
+      in: body
+      type: float
+      description: finished amount
+
+  responses:
+    200:
+      description: Request succesful
+    401:
+      description: missing or wrong arguments
+    400:
+      description: The Employee id is wrong

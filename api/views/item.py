@@ -1,8 +1,9 @@
 #!/usr/bin/python3
 
+'''Manage Employees Interactions'''
+
 from flask import request, abort, g
 import models
-from models.employee import Employee
 from models.item import Item
 from api import auth
 from api import auth
@@ -12,7 +13,7 @@ from flasgger.utils import swag_from
 
 
 @app_views.route('/items', methods=['GET'], strict_slashes=False)
-@swag_from('documentation/aplication/all_items.yml')
+@swag_from('documentation/application/all_items.yml', methods=['GET'])
 @auth.login_required
 def get_all_items():
     ret = {}
@@ -23,7 +24,7 @@ def get_all_items():
 
 
 @app_views.route('/<employee_id>/items', methods=['GET'], strict_slashes=False)
-@swag_from('documentation/aplication/all_employee_items.yml')
+@swag_from('documentation/application/all_employee_items.yml', methods=['GET'])
 @auth.login_required
 def get_employee_items(employee_id):
     ret = {}
@@ -35,7 +36,7 @@ def get_employee_items(employee_id):
 
 
 @app_views.route('/<employee_id>/items', methods=['POST'], strict_slashes=False)
-@swag_from('documentation/aplication/create_item.yml')
+@swag_from('documentation/application/new_employee_item.yml', methods=['POST'])
 @auth.login_required
 def create_item(employee_id):
     if not request.get_json():
@@ -53,7 +54,7 @@ def create_item(employee_id):
 
 
 @app_views.route('/<employee_id>/items', methods=['DELETE'], strict_slashes=False)
-@swag_from('/documentation/aplication/delete_item.yml')
+@swag_from('documentation/application/delete_item.yml', methods=['DELETE'])
 @auth.login_required
 def remove_item(employee_id):
     if not request.get_json():
@@ -74,7 +75,7 @@ def remove_item(employee_id):
 
 
 @app_views.route('/<employee_id>/items', methods=['PUT'], strict_slashes=False)
-@swag_from('/documentation/aplication/delete_item.yml')
+@swag_from('documentation/application/update_item.yml', methods=['PUT'])
 @auth.login_required
 def update_item(employee_id):
     if not request.get_json():
