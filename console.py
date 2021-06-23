@@ -59,6 +59,7 @@ class CORVUSCommand(cmd.Cmd):
         return new_dict
 
     def do_create(self, arg):
+        '''Creates a new object'''
         args = arg.split()
         if len(args) == 0:
             print("** class name missing **")
@@ -73,6 +74,8 @@ class CORVUSCommand(cmd.Cmd):
         print(instance.id)
 
     def do_all(self, arg):
+        '''List all the objects, if a class is passed only list elemets
+        from that class'''
         args = shlex.split(arg)
         obj_list = []
         if len(args) == 0:
@@ -89,6 +92,7 @@ class CORVUSCommand(cmd.Cmd):
         print("]")
 
     def do_update(self, arg):
+        '''Update a object'''
         args = shlex.split(arg)
         if len(args) == 0:
             print('** missing class name **')
