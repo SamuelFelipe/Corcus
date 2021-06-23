@@ -1,3 +1,5 @@
+// append all the employees in the respective table
+
 function listEmployees() {
   let headers = new Headers()
   headers.append('Content-Type', 'application/json')

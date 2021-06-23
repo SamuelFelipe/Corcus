@@ -1,3 +1,5 @@
+// creates and display the statistics
+
 let ctx1 = document.getElementById('payroll')
 let ctx2 = document.getElementById('eps')
 let ctx3 = document.getElementById('others')

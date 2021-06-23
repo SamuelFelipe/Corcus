@@ -1,3 +1,5 @@
+// manage the login form
+
 function makeGetRequest(e, form) {
   e.preventDefault()
   let dict = {}
