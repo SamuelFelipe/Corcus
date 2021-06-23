@@ -22,20 +22,30 @@ and society in general.
 If (<CORVUS_ENV> == test) the database will be erased at the end of the session
 to avoid it remove the variable
 
-console:
+To create the database execute the 'testDB.sql':
 
+```bash
+$ cat testDB.sql | mysql -uroot -p
 ```
+
+Console:
+
+```bash
 $ CORVUS_ENV=test CORVUS_MYSQL_USER=corvus_test CORVUS_MYSQL_PWD=c0rvus CORVUS_MYSQL_HOST=localhost CORVUS_MYSQL_DB=corvus_test_db ./console.py
 ```
 
 Flask api server:
 
-```
+```bash
 $ CORVUS_ENV=test CORVUS_MYSQL_USER=corvus_test CORVUS_MYSQL_PWD=c0rvus CORVUS_MYSQL_HOST=localhost CORVUS_MYSQL_DB=corvus_test_db python3 -m api.app
 ```
 
 Flask web server:
 
-```
+```bash
 $ CORVUS_ENV=test CORVUS_MYSQL_USER=corvus_test CORVUS_MYSQL_PWD=c0rvus CORVUS_MYSQL_HOST=localhost CORVUS_MYSQL_DB=corvus_test_db python3 -m web.app
 ```
+
+## license
+
+Open
