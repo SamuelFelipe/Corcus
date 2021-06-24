@@ -46,6 +46,10 @@ Flask web server:
 $ CORVUS_ENV=test CORVUS_MYSQL_USER=corvus_test CORVUS_MYSQL_PWD=c0rvus CORVUS_MYSQL_HOST=localhost CORVUS_MYSQL_DB=corvus_test_db python3 -m web.app
 ```
 
+## Api Documentation
+
+To read the api documentation run the api server and visit 'http://127.0.0.1:5000/apidoc/'
+
 ## license
 
 Open
